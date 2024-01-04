@@ -16,11 +16,14 @@ public class Bundle implements Cake {
         if (cakes.isEmpty()) {
             return "Bundle is empty";
         }
-        return "Bundle is made of " + cakes.stream().map(Cake::getName).collect(Collectors.joining(" and "));
+        return "Bundle of " + cakes.stream().map(Cake::getName).collect(Collectors.joining(" and "));
     }
 
     @Override
     public BigDecimal getPrice() {
-        return BUNDLE_REDUCTION.multiply(cakes.stream().map(Cake::getPrice).reduce(BigDecimal.ZERO, BigDecimal::add));
+        return cakes.stream()
+                .map(Cake::getPrice)
+                .map(price -> price.multiply(BUNDLE_REDUCTION))
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 }

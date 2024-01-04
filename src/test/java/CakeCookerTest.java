@@ -72,15 +72,24 @@ public class CakeCookerTest {
         assertEquals(BigDecimal.ZERO, emptyBundle.getPrice().stripTrailingZeros());
 
         Bundle bundleWith1Cupcake = new Bundle(cupcake);
-        assertEquals("Bundle is made of \uD83E\uDDC1", bundleWith1Cupcake.getName());
+        assertEquals("Bundle of \uD83E\uDDC1", bundleWith1Cupcake.getName());
         assertEquals(new BigDecimal("0.9"), bundleWith1Cupcake.getPrice());
 
         Bundle bundleWith1CupcakeAnd1Cookie = new Bundle(cupcake, cookie);
-        assertEquals("Bundle is made of \uD83E\uDDC1 and \uD83C\uDF6A", bundleWith1CupcakeAnd1Cookie.getName());
+        assertEquals("Bundle of \uD83E\uDDC1 and \uD83C\uDF6A", bundleWith1CupcakeAnd1Cookie.getName());
         assertEquals(new BigDecimal("2.7"), bundleWith1CupcakeAnd1Cookie.getPrice());
 
         Bundle bundleWith2CupcakesAnd1Cookie = new Bundle(cupcake, cupcake, cookie);
-        assertEquals("Bundle is made of \uD83E\uDDC1 and \uD83E\uDDC1 and \uD83C\uDF6A", bundleWith2CupcakesAnd1Cookie.getName());
+        assertEquals("Bundle of \uD83E\uDDC1 and \uD83E\uDDC1 and \uD83C\uDF6A", bundleWith2CupcakesAnd1Cookie.getName());
         assertEquals(new BigDecimal("3.6"), bundleWith2CupcakesAnd1Cookie.getPrice());
+
+        Bundle bundleWith1CupcakeAnd2Cookies = new Bundle(cupcake, cookie, cookie);
+        assertEquals("Bundle of \uD83E\uDDC1 and \uD83C\uDF6A and \uD83C\uDF6A", bundleWith1CupcakeAnd2Cookies.getName());
+        assertEquals(new BigDecimal("4.5"), bundleWith1CupcakeAnd2Cookies.getPrice());
+
+        Bundle bundleWith2Cookies = new Bundle(cookie, cookie);
+        Bundle bundleWith1CupcakeAnd1BundleWith2Cookies = new Bundle(cupcake, bundleWith2Cookies);
+        assertEquals("Bundle of \uD83E\uDDC1 and Bundle of \uD83C\uDF6A and \uD83C\uDF6A", bundleWith1CupcakeAnd1BundleWith2Cookies.getName());
+        assertEquals(new BigDecimal("4.14"), bundleWith1CupcakeAnd1BundleWith2Cookies.getPrice());
     }
 }
