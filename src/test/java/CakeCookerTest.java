@@ -23,28 +23,41 @@ public class CakeCookerTest {
     @Test
     void chocolateToppingShouldBeCorrect() {
         // chocolate cupcake
-        Cake chocolateCupcake = new ChocolateDecorator(new Cupcake());
-        Assertions.assertEquals("\uD83E\uDDC1 with \uD83C\uDF6B", chocolateCupcake
+        Cake cupcakeWithChocolate = new ChocolateDecorator(new Cupcake());
+        Assertions.assertEquals("\uD83E\uDDC1 with \uD83C\uDF6B", cupcakeWithChocolate
                 .getName());
-        Assertions.assertEquals(new BigDecimal("1.1"), chocolateCupcake.getPrice());
+        Assertions.assertEquals(new BigDecimal("1.1"), cupcakeWithChocolate.getPrice());
         // chocolate cookie
-        Cake chocolateCookie = new ChocolateDecorator(new Cookie());
-        Assertions.assertEquals("\uD83C\uDF6A with \uD83C\uDF6B", chocolateCookie
+        Cake cookieWithChocolate = new ChocolateDecorator(new Cookie());
+        Assertions.assertEquals("\uD83C\uDF6A with \uD83C\uDF6B", cookieWithChocolate
                 .getName());
-        Assertions.assertEquals(new BigDecimal("2.1"), chocolateCookie.getPrice());
+        Assertions.assertEquals(new BigDecimal("2.1"), cookieWithChocolate.getPrice());
     }
 
     @Test
     void peanutToppingShouldBeCorrect() {
         // peanut cupcake
-        Cake peanutCupcake = new PeanutDecorator(new Cupcake());
-        Assertions.assertEquals("\uD83E\uDDC1 with \uD83E\uDD5C", peanutCupcake
+        Cake cupcakeWithPeanut = new PeanutDecorator(new Cupcake());
+        Assertions.assertEquals("\uD83E\uDDC1 with \uD83E\uDD5C", cupcakeWithPeanut
                 .getName());
-        Assertions.assertEquals(new BigDecimal("1.2"), peanutCupcake.getPrice());
+        Assertions.assertEquals(new BigDecimal("1.2"), cupcakeWithPeanut.getPrice());
         // peanut cookie
-        Cake peanutCookie = new PeanutDecorator(new Cookie());
-        Assertions.assertEquals("\uD83C\uDF6A with \uD83E\uDD5C", peanutCookie
+        Cake cookieWithPeanut = new PeanutDecorator(new Cookie());
+        Assertions.assertEquals("\uD83C\uDF6A with \uD83E\uDD5C", cookieWithPeanut
                 .getName());
-        Assertions.assertEquals(new BigDecimal("2.2"), peanutCookie.getPrice());
+        Assertions.assertEquals(new BigDecimal("2.2"), cookieWithPeanut.getPrice());
+    }
+
+    @Test
+    void multipleToppingsShouldBeCorrect() {
+        // cookie with chocolate and peanut
+        Cake cookieWithChocolateAndPeanut = new PeanutDecorator(new ChocolateDecorator(new Cookie()));
+        Assertions.assertEquals("\uD83C\uDF6A with \uD83C\uDF6B and \uD83E\uDD5C", cookieWithChocolateAndPeanut
+                .getName());
+
+        // cookie with peanut and chocolate
+        Cake cookieWithPeanutAndChocolate = new ChocolateDecorator(new PeanutDecorator(new Cookie()));
+        Assertions.assertEquals("\uD83C\uDF6A with \uD83C\uDF6B and \uD83E\uDD5C", cookieWithPeanutAndChocolate
+                .getName());
     }
 }
