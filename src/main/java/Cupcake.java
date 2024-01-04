@@ -1,7 +1,12 @@
-public class Cupcake extends Cake {
-    public Cupcake() {
-        super();
-        this.price = 1L;
-        this.name = "\uD83E\uDDC1";
+public class Cupcake implements Cake {
+
+    @Override
+    public String getName() {
+        return "\uD83E\uDDC1";
+    }
+
+    @Override
+    public Long getPrice() {
+        return 1L;
     }
 }

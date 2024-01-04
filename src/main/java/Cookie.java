@@ -1,7 +1,12 @@
-public class Cookie extends Cake {
-    public Cookie() {
-        super();
-        this.price = 2L;
-        this.name = "\uD83C\uDF6A";
+public class Cookie implements Cake {
+
+    @Override
+    public String getName() {
+        return "\uD83C\uDF6A";
+    }
+
+    @Override
+    public Long getPrice() {
+        return 2L;
     }
 }
