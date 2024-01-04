@@ -1,3 +1,5 @@
+import java.math.BigDecimal;
+
 public class Cupcake implements Cake {
 
     @Override
@@ -6,7 +8,7 @@ public class Cupcake implements Cake {
     }
 
     @Override
-    public Long getPrice() {
-        return 1L;
+    public BigDecimal getPrice() {
+        return new BigDecimal(1);
     }
 }

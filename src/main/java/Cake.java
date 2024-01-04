@@ -1,4 +1,6 @@
+import java.math.BigDecimal;
+
 public interface Cake {
     String getName();
-    Long getPrice();
+    BigDecimal getPrice();
 }

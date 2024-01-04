@@ -1,3 +1,5 @@
+import java.math.BigDecimal;
+
 public class Cookie implements Cake {
 
     @Override
@@ -6,7 +8,7 @@ public class Cookie implements Cake {
     }
 
     @Override
-    public Long getPrice() {
-        return 2L;
+    public BigDecimal getPrice() {
+        return new BigDecimal(2);
     }
 }
