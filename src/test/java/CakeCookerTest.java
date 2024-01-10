@@ -90,6 +90,19 @@ public class CakeCookerTest {
         Bundle bundleWith2Cookies = new Bundle(cookie, cookie);
         Bundle bundleWith1CupcakeAnd1BundleWith2Cookies = new Bundle(cupcake, bundleWith2Cookies);
         assertEquals("Bundle of \uD83E\uDDC1 and Bundle of \uD83C\uDF6A and \uD83C\uDF6A", bundleWith1CupcakeAnd1BundleWith2Cookies.getName());
-        assertEquals(new BigDecimal("4.14"), bundleWith1CupcakeAnd1BundleWith2Cookies.getPrice());
+        assertEquals(new BigDecimal("4.5"), bundleWith1CupcakeAnd1BundleWith2Cookies.getPrice());
+
+        Bundle bigBundle = new Bundle(
+                new Bundle(cupcake, cupcake),
+                new Bundle(cookie, cookie, cupcake),
+                new Bundle(
+                        new Bundle(cookie, cupcake),
+                        new Bundle(cupcake, cookie)
+                ),
+                cookie,
+                cookie,
+                cupcake
+        );
+        assertEquals(new BigDecimal("16.2"), bigBundle.getPrice());
     }
 }
